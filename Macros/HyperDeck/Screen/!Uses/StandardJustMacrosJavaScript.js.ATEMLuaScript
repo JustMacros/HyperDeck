@@ -1,0 +1,60 @@
+if EnviroRead(  "USE_WEB_SERVER_ADDRESS" ) == 0 then
+   EnviroWrite( "USE_WEB_SERVER_ADDRESS", "localhost" );
+end;
+
+if EnviroRead(  "USE_WEB_PORT" ) == 0 then
+   EnviroWrite( "USE_WEB_PORT", 39812 );
+end;
+
+-- +----------------------------------------------------------+
+-- | Use these addresses and ports for all AJAX Calls         |           
+-- +----------------------------------------------------------+
+ResponseWrite( "function JUSTMACROS_SERVER_ADDRESS() {");
+ResponseWrite( "         return '" .. EnviroRead( "USE_WEB_SERVER_ADDRESS" ) .. "';");
+ResponseWrite( "} ");
+
+ResponseWrite( "function JUSTMACROS_SERVER_PORT() {");                               
+ResponseWrite( "         return " .. EnviroRead( "USE_WEB_PORT" ) .. ";");
+ResponseWrite( "} ");
+
+ResponseWrite( "function JUSTMACROS_IMAGES_PORT() {");
+ResponseWrite( "         return 39915;");
+ResponseWrite( "} ");
+
+ResponseWrite( "function JUSTMACROS_UPLOAD_PORT() {");
+ResponseWrite( "         return 39935;");
+ResponseWrite( "} ");
+                                                                                    
+-- +----------------------------------------------------------+
+-- | AJAX Calls                                               |
+-- +----------------------------------------------------------+
+ResponseWrite( "function ResponseQry( pvQryStringURL ) {" );
+ResponseWrite(          "tStr = 'http://' + JUSTMACROS_SERVER_ADDRESS() + ':' + JUSTMACROS_SERVER_PORT() + '/' + pvQryStringURL;" );
+ResponseWrite(          "xmlhttp = new XMLHttpRequest();" );
+ResponseWrite(          "try {" );
+ResponseWrite(                "xmlhttp.open('POST', tStr, false);" );
+ResponseWrite(                "xmlhttp.send();" );
+ResponseWrite(          "} catch (err) {" );
+ResponseWrite(          "}" );
+ResponseWrite(          "lvResult = xmlhttp.responseText;" );
+ResponseWrite(          "return lvResult;" );
+ResponseWrite( "} " );
+
+ResponseWrite( "function ResponseQryNoWait( pvQryStringURL ) {" );
+ResponseWrite(          "tStr = 'http://' + JUSTMACROS_SERVER_ADDRESS() + ':' + JUSTMACROS_SERVER_PORT() + '/' + pvQryStringURL;" );
+ResponseWrite(          "xmlhttp = new XMLHttpRequest();" );
+ResponseWrite(          "try {" );
+ResponseWrite(                "xmlhttp.open('POST', tStr, true);" );
+ResponseWrite(                "xmlhttp.send();" );
+ResponseWrite(          "} catch (err) {" );
+ResponseWrite(          "}" );
+ResponseWrite(          "return 0;" );
+ResponseWrite( "} " );
+
+
+
+
+
+
+
+

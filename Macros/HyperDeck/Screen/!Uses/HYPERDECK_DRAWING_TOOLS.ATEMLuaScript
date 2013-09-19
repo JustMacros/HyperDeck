@@ -1,0 +1,189 @@
+-- -----------------------------------------------------------------------------------------------------------------------------------
+--
+-- -----------------------------------------------------------------------------------------------------------------------------------
+function DrawHyperDeckStatusPanel( pvHyperDeckNumber, pvLeft, pvTop, pvHeight, pvWidth )
+           DrawContainingPanel( "pnlHyperDeck" .. pvHyperDeckNumber .. "SlotInfo", pvLeft, pvTop, pvHeight, pvWidth );
+             ResponseWrite(     "<div style='position:absolute;" ..
+                                                "left:1px;" ..
+                                                 "top:3px;" ..
+                                               "width:334px;" ..
+                                              "height:329px;" ..
+--                                    "background-color:blue;" ..
+                                    "'>")
+             ResponseWrite(     "<center>" );
+             ResponseWrite(     "<table style='width:80%'>" );
+
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>IP Address:</td>"          ..
+                                      "<td class='LeftAlignedGridCol' id='tdIPAddress'>"     .. "Unknown" .. "</td></tr>" );
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Device Type:</td>"         ..
+                                      "<td class='LeftAlignedGridCol' id='tdDeviceType'>"    .. "Unknown" .. "</td></tr>" );
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Version Number:</td>"      ..
+                                      "<td class='LeftAlignedGridCol' id='tdVersionNumber'>" .. "Unknown" .. "</td></tr>" );
+
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' colspan=2><hr /></td></tr>"    );
+
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Current Slot Number:</td>" ..
+                                      "<td class='LeftAlignedGridCol' id='tdCurrentSlotNo'>" .. "Unknown" .. "</td></tr>" );
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Current Clip Number:</td>" ..
+                                      "<td class='LeftAlignedGridCol' id='tdCurrentClipNo'>" .. "Unknown" .. "</td></tr>" );
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Loop Mode:</td>" ..
+                                      "<td class='LeftAlignedGridCol' id='tdLoopMode'>" .. "Unknown" .. "</td></tr>" );
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Single Clip Mode:</td>" ..
+                                      "<td class='LeftAlignedGridCol' id='tdSingleClipMode'>" .. "Unknown" .. "</td></tr>" );
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Playback speed:</td>" ..
+                                      "<td class='LeftAlignedGridCol' id='tdPlaybackSpeed'>" .. "Unknown" .. "</td></tr>" );
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Video Mode:</td>" ..
+                                      "<td class='LeftAlignedGridCol' id='tdVideoMode'>" .. "Unknown" .. "</td></tr>" );
+
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' colspan=2><hr /></td></tr>"    );
+
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Slot 1 Volume Name:</td>" ..
+                                      "<td class='LeftAlignedGridCol' id='tdSlot1VolName'>" .. "Unknown" .. "</td></tr>" );
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Space Available:</td>" ..
+                                      "<td class='LeftAlignedGridCol' id='tdSlot1Space'>" .. "Unknown" .. "</td></tr>" );
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Status:</td>" ..
+                                      "<td class='LeftAlignedGridCol' id='tdSlot1Status'>" .. "Unknown" .. "</td></tr>" );
+
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' colspan=2><hr /></td></tr>"    );
+
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Slot 2 Volume Name:</td>" ..
+                                      "<td class='LeftAlignedGridCol' id='tdSlot2VolName'>" .. "Unknown" .. "</td></tr>" );
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Space Available:</td>" ..
+                                      "<td class='LeftAlignedGridCol' id='tdSlot2Space'>" .. "Unknown" .. "</td></tr>" );
+             ResponseWrite(       "<tr><td class='RightAlignedGridCol' style='width:150px;'>Status:</td>" ..
+                                      "<td class='LeftAlignedGridCol' id='tdSlot2Status'>" .. "Unknown" .. "</td></tr>" );
+
+             ResponseWrite(     "</table>" );
+             ResponseWrite(     "</center>" );
+             ResponseWrite(     "</div>" );
+           DrawContainingPanel_Close();
+end;
+
+-- -----------------------------------------------------------------------------------------------------------------------------------
+--
+-- -----------------------------------------------------------------------------------------------------------------------------------
+function DrawHyperDeckClipsList(   pvHyperDeckNumber, pvLeft, pvTop, pvHeight, pvWidth )
+           DrawContainingPanel( "pnlHyperDeck" .. pvHyperDeckNumber .. "ClipList", pvLeft, pvTop, pvHeight, pvWidth );
+             ResponseWrite(     "<div id='pnlClipListCointainer_" .. pvHyperDeckNumber .. "'" ..
+                                    " style='position:absolute;" ..
+                                               "width:100%;" ..
+                                              "height:100%;" ..
+                                          "overflow-y:scroll;" ..
+--                                    "background-color:blue;" ..
+                                    "'>")
+             ResponseWrite(     "</div>" );
+           DrawContainingPanel_Close();
+           ResponseWrite(     "<script>PopulatePanelWithClipList(" .. pvHyperDeckNumber .. ",'" .. "pnlClipListCointainer_" .. pvHyperDeckNumber .. "');</script>" );
+end;
+
+-- -----------------------------------------------------------------------------------------------------------------------------------
+--
+-- -----------------------------------------------------------------------------------------------------------------------------------
+function DrawClipNamePanel( pvHyperDeckNumber )
+         ResponseWrite("<div style='position:absolute;" ..
+--                           "background-color:red;"   ..
+                                       "left:550px;" ..
+                                        "top:80px;"  ..
+                                      "width:444px;" ..
+                                     "height:60px;"  .. "'>")
+         ResponseWrite(  "<div style='position:absolute;" ..
+--                             "background-color:blue;"   ..
+                                         "left:5px;" ..
+                                          "top:7px;"  ..
+                                        "width:145px;" ..
+                                       "height:18px;"  .. "'>" );
+         ResponseWrite(     "<table>");
+         ResponseWrite(       "<tr>");
+         ResponseWrite(         "<td style='text-align:right;color:" .. CONST_VIS_COLOR_BLUE .. ";'>");
+         ResponseWrite(           "Next Clip Name" );
+         ResponseWrite(         "</td>");
+         ResponseWrite(       "</tr>");
+         ResponseWrite(     "</table>");
+         ResponseWrite(   "</div>");
+
+         ResponseWrite(  "<div style='position:absolute;" ..
+--                             "background-color:blue;"   ..
+                                         "left:5px;" ..
+                                          "top:35px;"  ..
+                                        "width:145px;" ..
+                                       "height:18px;"  .. "'>" );
+         ResponseWrite(     "<table>");
+         ResponseWrite(       "<tr>");
+         ResponseWrite(         "<td style='text-align:right;color:" .. CONST_VIS_COLOR_BLUE .. ";'>");
+         ResponseWrite(           "Recording" );
+         ResponseWrite(         "</td>");
+         ResponseWrite(       "</tr>");
+         ResponseWrite(     "</table>");
+         ResponseWrite(   "</div>");
+
+         ResponseWrite(  "<div style='position:absolute;" ..
+--                             "background-color:green;"   ..
+                                         "left:155px;" ..
+                                          "top:5px;"  ..
+                                        "width:250px;" ..
+                                       "height:22px;"  .. "'>" );
+         ResponseWrite(     "<input type='text' " ..
+                                     "id='eNextClipName_" .. pvHyperDeckNumber .. "' " ..
+                                  "value='Capture' " ..
+                                  "style='background-color:black;" ..
+                                                    "color:" .. CONST_VIS_COLOR_YELLOW .. ";" ..
+                                                    "width:245px;" ..
+                                                   "border:none;" ..
+                                        "'>");
+         ResponseWrite(   "</div>");
+
+         ResponseWrite(  "<div style='position:absolute;" ..
+--                             "background-color:green;"   ..
+                                         "left:155px;" ..                      
+                                          "top:33px;"  ..             
+                                        "width:250px;" ..
+                                       "height:22px;"  .. "'>" );
+         ResponseWrite(     "<input type='text' " ..
+                                     "id='eRecordingClipName_" .. pvHyperDeckNumber .. "' " ..
+                                  "value='' " ..
+                                  "style='background-color:black;" ..
+                                                    "color:" .. CONST_VIS_COLOR_YELLOW .. ";" ..
+                                                    "width:245px;" ..
+                                                   "border:none;" ..
+                                        "'" ..
+                            " READONLY >");
+         ResponseWrite(   "</div>");
+
+         ResponseWrite( "</div>");
+end;
+
+-- -----------------------------------------------------------------------------------------------------------------------------------
+--
+-- -----------------------------------------------------------------------------------------------------------------------------------
+function DrawAdvancedCuePanel( pvHyperDeckNumber )
+         ResponseWrite("<div style='position:absolute;" ..
+--                           "background-color:red;"   ..
+                                       "left:350px;" ..
+                                        "top:302px;"  ..
+                                      "width:665px;" ..
+                                     "height:110px;"  .. "'>")
+
+-- First Draw the Time Code Entry Box
+           DrawCueTimeCodeWindow( pvHyperDeckNumber, 10, 20 );
+-- First Draw the buttons to Cue either using the Clip ID or entered Time Code
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_Clip",      "CUE SELECTED CLIP", 205, 10,  45, 150, "HyperDeckCueSelectClip(" .. pvHyperDeckNumber .. ",1 );" )
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_TimeCode",  "CUE TIMECODE",      205, 60,  45, 150, "HyperDeckCueTimeCode(" .. pvHyperDeckNumber .. ",2 );" )
+
+-- Now draw the buttons that allow the user to load all clips of a particular Video Format
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_PAL",     "PAL",        365,  5,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"PAL\"     );" );
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_NTSC",    "NTSC",       465,  5,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"NTSC\"    );" );
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_1080P23", "1080p23.98", 565,  5,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"1080p23\" );" );
+--           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_NTSC23",  "NTSC23.98",  565,  5,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"NTSC23\"  );" );
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_720P50",  "720p50",     365, 30,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"720p50\"  );" );
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_1080I50", "1080i50",    465, 30,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"1080i50\" );" );
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_1080P25", "1080p25",    565, 55,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"1080p25\" );" );
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_720P59",  "720p59.94",  365, 55,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"720p59\"  );" );
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_1080I59", "1080i59.94", 465, 55,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"1080i59\" );" );
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_1080P30", "1080p30",    565, 80,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"1080p30\" );" );
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_720P60",  "720p60",     365, 80,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"720p60\"  );" );
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_1080P24", "1080p24",    565, 30,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"1080p24\" );" );
+           DrawModeButton(      "bCue_"       .. pvHyperDeckNumber .. "_VM_1080I60", "1080i60",    465, 80,  24, 95, "HyperDeckCueVideoMode(" .. pvHyperDeckNumber .. ",\"1080i60\" );" );
+
+         ResponseWrite( "</div>");
+end;
+

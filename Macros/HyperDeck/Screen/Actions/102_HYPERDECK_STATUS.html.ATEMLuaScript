@@ -1,0 +1,62 @@
+
+function ReadQueryString()
+         lvHyperDeck = tonumber( QueryString[ "HYPERDECK" ] );
+end;
+
+if pcall( ReadQueryString ) == false then
+   lvHyperDeck = 1;
+end;
+
+if ( lvHyperDeck > 0 ) and ( lvHyperDeck < ( HyperDeckCount() + 1 ) ) then
+     ResponseWrite(    HyperDeckGetIPAdress(   lvHyperDeck ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetDeviceType( lvHyperDeck ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetProtocolVersion( lvHyperDeck ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetActiveSlot( lvHyperDeck ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetCurrentClipNumber( lvHyperDeck ) );
+     ResponseWrite(    "~" );
+     if HyperDeckGetLoopMode( lvHyperDeck ) == true then
+        ResponseWrite( "LOOP-ENABLED" );
+     else
+        ResponseWrite( "LOOP-DISABLED" );
+     end;                                                          
+     ResponseWrite(    "~" );
+     if HyperDeckGetSingleClipMode( lvHyperDeck ) == true then
+        ResponseWrite( "SINGLE-CLIP-ENABLED" );
+     else
+        ResponseWrite( "SINGLE-CLIP-DISABLED" );                  
+     end;
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetStatus( lvHyperDeck ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetSpeed( lvHyperDeck ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetTimeCode( lvHyperDeck ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetVideoFormat( lvHyperDeck ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetSlotVolumeName( lvHyperDeck, 1 ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetSlotRecordTime( lvHyperDeck, 1 ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetSlotStatus( lvHyperDeck, 1 ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetSlotVolumeName( lvHyperDeck, 2 ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetSlotRecordTime( lvHyperDeck, 2 ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetSlotStatus( lvHyperDeck, 2 ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetVideoInput( lvHyperDeck ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetAudioInput( lvHyperDeck ) );
+     ResponseWrite(    "~" );
+     ResponseWrite(    HyperDeckGetFileFormat( lvHyperDeck ) );
+else
+     VSLog( "HyperDeck Index:" .. lvHyperDeck .. " not valid." );
+end;
+
+

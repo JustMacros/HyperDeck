@@ -1,0 +1,22 @@
+CONST_BUTTON_IMAGE_ROOT_PATH                = "Images/MediaServer/Buttons/";
+
+CONST_BUTTON_IMAGE_FIRST                    = "First.png" ;
+CONST_BUTTON_IMAGE_PREVIOUS                 = "Back.png";
+CONST_BUTTON_IMAGE_PLAY                     = "Play.png";
+CONST_BUTTON_IMAGE_PAUSE                    = "Pause.png";
+CONST_BUTTON_IMAGE_FORWARD                  = "Forward.png";
+CONST_BUTTON_IMAGE_LAST                     = "Next.png";
+CONST_BUTTON_IMAGE_RECORD                   = "Record.png";
+CONST_BUTTON_IMAGE_STOP                     = "StopRec.png";
+CONST_BUTTON_IMAGE_EJECT                    = "Eject.png";
+
+function BUTTON_IMAGE_FIRST()    return "http://" .. EnviroRead( "USE_WEB_SERVER_ADDRESS" ) .. ":" .. GLOBAL_JUST_MACROS_IMAGES_PORT .. "/" .. CONST_BUTTON_IMAGE_ROOT_PATH .. CONST_BUTTON_IMAGE_FIRST;    end;
+function BUTTON_IMAGE_PREVIOUS() return "http://" .. EnviroRead( "USE_WEB_SERVER_ADDRESS" ) .. ":" .. GLOBAL_JUST_MACROS_IMAGES_PORT .. "/" .. CONST_BUTTON_IMAGE_ROOT_PATH .. CONST_BUTTON_IMAGE_PREVIOUS; end;
+function BUTTON_IMAGE_PLAY()     return "http://" .. EnviroRead( "USE_WEB_SERVER_ADDRESS" ) .. ":" .. GLOBAL_JUST_MACROS_IMAGES_PORT .. "/" .. CONST_BUTTON_IMAGE_ROOT_PATH .. CONST_BUTTON_IMAGE_PLAY;     end;
+function BUTTON_IMAGE_PAUSE()    return "http://" .. EnviroRead( "USE_WEB_SERVER_ADDRESS" ) .. ":" .. GLOBAL_JUST_MACROS_IMAGES_PORT .. "/" .. CONST_BUTTON_IMAGE_ROOT_PATH .. CONST_BUTTON_IMAGE_PAUSE;    end;
+function BUTTON_IMAGE_FORWARD()  return "http://" .. EnviroRead( "USE_WEB_SERVER_ADDRESS" ) .. ":" .. GLOBAL_JUST_MACROS_IMAGES_PORT .. "/" .. CONST_BUTTON_IMAGE_ROOT_PATH .. CONST_BUTTON_IMAGE_FORWARD;  end;
+function BUTTON_IMAGE_LAST()     return "http://" .. EnviroRead( "USE_WEB_SERVER_ADDRESS" ) .. ":" .. GLOBAL_JUST_MACROS_IMAGES_PORT .. "/" .. CONST_BUTTON_IMAGE_ROOT_PATH .. CONST_BUTTON_IMAGE_LAST;     end;
+function BUTTON_IMAGE_RECORD()   return "http://" .. EnviroRead( "USE_WEB_SERVER_ADDRESS" ) .. ":" .. GLOBAL_JUST_MACROS_IMAGES_PORT .. "/" .. CONST_BUTTON_IMAGE_ROOT_PATH .. CONST_BUTTON_IMAGE_RECORD;   end;
+function BUTTON_IMAGE_STOP()     return "http://" .. EnviroRead( "USE_WEB_SERVER_ADDRESS" ) .. ":" .. GLOBAL_JUST_MACROS_IMAGES_PORT .. "/" .. CONST_BUTTON_IMAGE_ROOT_PATH .. CONST_BUTTON_IMAGE_STOP;     end;
+function BUTTON_IMAGE_EJECT()    return "http://" .. EnviroRead( "USE_WEB_SERVER_ADDRESS" ) .. ":" .. GLOBAL_JUST_MACROS_IMAGES_PORT .. "/" .. CONST_BUTTON_IMAGE_ROOT_PATH .. CONST_BUTTON_IMAGE_EJECT;    end;
+                                       

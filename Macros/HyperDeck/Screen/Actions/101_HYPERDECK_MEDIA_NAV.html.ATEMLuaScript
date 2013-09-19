@@ -1,0 +1,194 @@
+
+function ReadQueryString()
+         lvHyperDeck  = tonumber( QueryString[ "HYPERDECK" ] );
+         lvCommand    =           QueryString[ "COMMAND" ];
+         if lvCommand == "SELECTSLOT"  then
+            lvSlotNo  = tonumber( QueryString[ "SLOTNO" ] );
+         end;
+         if lvCommand == "CUECLIP" then
+            lvClipNo  = tonumber( QueryString[ "CLIP" ] );
+         end;
+         if lvCommand == "RECORD" then
+            lvFileName = BrowserDecodeString( QueryString[ "FILENAME" ] );
+         end;
+         if lvCommand == "CUEVIDEOMODE" then
+            lvVideoMode = BrowserDecodeString( QueryString[ "VIDEOMODE" ] );
+         end;
+         if lvCommand == "CUETC" then
+            lvTimeCode = BrowserDecodeString( QueryString[ "TC" ] );
+         end;
+         if lvCommand == "SETVIDEOCONNECTION" then
+            lvType     = BrowserDecodeString( QueryString[ "TYPE" ] );
+         end;
+         if lvCommand == "SETAUDIOCONNECTION" then
+            lvType     = BrowserDecodeString( QueryString[ "TYPE" ] );
+         end;
+         if lvCommand == "SETFILEFORMAT" then
+            lvType     = BrowserDecodeString( QueryString[ "TYPE" ] );
+         end;
+end;
+
+if pcall( ReadQueryString ) == false then
+   lvHyperDeck = 0;
+end;
+
+function IncreaseSpeed( pvHyperDeckNo )
+         if ( HyperDeckGetStatus( pvHyperDeckNo ) == 'playing' ) or
+            ( HyperDeckGetStatus( pvHyperDeckNo ) == 'rewind' )  or
+            ( HyperDeckGetStatus( pvHyperDeckNo ) == 'forward' ) then
+                if HyperDeckGetSpeed( pvHyperDeckNo ) > 0 then
+                   if HyperDeckGetSpeed( pvHyperDeckNo ) < 100 then
+                      if HyperDeckGetSpeed( pvHyperDeckNo ) < 50 then
+                         HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) + 10 );
+                      else
+                         HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) + 10 );
+                      end;
+                   else
+                      if HyperDeckGetSpeed( pvHyperDeckNo ) < 500 then
+                         HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) + 50 );
+                      else
+                         if HyperDeckGetSpeed( pvHyperDeckNo ) < 2000 then
+                            HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) + 100 );
+                         else
+                            HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) + 500 );
+                         end;
+                      end;
+                   end;
+                else
+                   if HyperDeckGetSpeed( pvHyperDeckNo ) > (-100) then
+                      HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) + 25 );
+                   else
+                      if HyperDeckGetSpeed( pvHyperDeckNo ) > (-500) then
+                         HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) + 50 );
+                      else
+                         if HyperDeckGetSpeed( pvHyperDeckNo ) > (-2000) then
+                            HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) + 100 );
+                         else
+                            HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) + 500 );
+                         end;
+                      end;
+                   end;
+                end;
+         elseif HyperDeckGetStatus( pvHyperDeckNo ) == 'still' then
+                HyperDeckSetSpeed( pvHyperDeckNo, 10 );
+                HyperDeckPlay( pvHyperDeckNo );
+         end;
+end;
+
+function DecreaseSpeed( pvHyperDeckNo )
+         if ( HyperDeckGetStatus( pvHyperDeckNo ) == 'playing' ) or
+            ( HyperDeckGetStatus( pvHyperDeckNo ) == 'rewind' )  or
+            ( HyperDeckGetStatus( pvHyperDeckNo ) == 'forward' ) then
+                if HyperDeckGetSpeed( pvHyperDeckNo ) > 0 then
+                   if HyperDeckGetSpeed( pvHyperDeckNo ) < 100 then
+                      HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) - 25 );
+                   else
+                      if HyperDeckGetSpeed( pvHyperDeckNo ) < 500 then
+                         HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) - 50 );
+                      else
+                         if HyperDeckGetSpeed( pvHyperDeckNo ) < 2000 then
+                            HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) - 100 );
+                         else                 
+                            HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) - 500 );
+                         end;
+                      end;
+                   end;
+                else
+                   if HyperDeckGetSpeed( pvHyperDeckNo ) > (-100) then
+                      HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) - 25 );
+                   else
+                      if HyperDeckGetSpeed( pvHyperDeckNo ) > (-500) then
+                         HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) - 50 );
+                      else
+                         if HyperDeckGetSpeed( pvHyperDeckNo ) > (-2000) then
+                            HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) - 100 );
+                         else
+                            HyperDeckSetSpeed( pvHyperDeckNo, HyperDeckGetSpeed( pvHyperDeckNo ) - 500 );
+                         end;
+                      end;
+                   end;
+                end;
+         elseif HyperDeckGetStatus( pvHyperDeckNo ) == 'still' then
+                HyperDeckSetSpeed( pvHyperDeckNo, -10 );
+                HyperDeckPlay( pvHyperDeckNo );
+         end;
+end;
+
+-- ----------------------------------------------------------------------------------------------------------------------------
+--
+-- ----------------------------------------------------------------------------------------------------------------------------
+if ( lvHyperDeck > 0 ) and ( lvHyperDeck < ( HyperDeckCount() + 1 ) ) then
+     if     lvCommand == "SELECTSLOT"  then
+            HyperDeckSetActiveSlot( lvHyperDeck, lvSlotNo );
+     elseif lvCommand == "PLAY"    then
+            HyperDeckSetSpeed( lvHyperDeck, 100 );
+            HyperDeckPlay( lvHyperDeck );
+     elseif lvCommand == "PAUSE"   then
+            HyperDeckStop( lvHyperDeck );
+     elseif lvCommand == "STOP"    then
+            HyperDeckStop( lvHyperDeck );
+     elseif lvCommand == "FIRST"   then
+            if HyperDeckGetCurrentClipNumber( lvHyperDeck ) > 1 then
+               HyperDeckCue( lvHyperDeck, HyperDeckGetCurrentClipNumber( lvHyperDeck ) - 1 );
+            else
+               HyperDeckCue( lvHyperDeck, 1 );
+            end;
+     elseif lvCommand == "REVERSE" then
+            DecreaseSpeed( lvHyperDeck )
+     elseif lvCommand == "FORWARD" then
+            IncreaseSpeed( lvHyperDeck )
+     elseif lvCommand == "LAST"    then
+            if HyperDeckGetCurrentClipNumber( lvHyperDeck ) < ( HyperDeckClipCount( lvHyperDeck ) - 1 ) then
+               HyperDeckCue( lvHyperDeck, HyperDeckGetCurrentClipNumber( lvHyperDeck ) + 1 );
+            else
+               HyperDeckCue( lvHyperDeck, HyperDeckClipCount( lvHyperDeck ) );
+            end;
+     elseif lvCommand == "RECORD"  then
+            if lvFileName ~= nil then
+               HyperDeckRecord( lvHyperDeck, lvFileName );
+            else
+               HyperDeckRecord( lvHyperDeck );
+            end;
+     elseif lvCommand == "EJECT"   then
+            HyperDeckE2E( lvHyperDeck )
+     elseif lvCommand == "CUECLIP"   then
+            HyperDeckCue( lvHyperDeck, lvClipNo )
+     elseif lvCommand == "CUEVIDEOMODE" then
+            HyperDeckCueVideoMode( lvHyperDeck, lvVideoMode );
+     elseif lvCommand == "CUETC" then
+            lvIdx      = string.find( lvTimeCode, ":" );
+            lvHH       = tonumber( string.sub(  lvTimeCode, 1, lvIdx - 1 ) );
+            lvTimeCode = string.sub(  lvTimeCode, lvIdx + 1 );
+            lvIdx      = string.find( lvTimeCode, ":" );
+            lvMM       = tonumber( string.sub(  lvTimeCode, 1, lvIdx - 1 ) );
+            lvTimeCode = string.sub(  lvTimeCode, lvIdx + 1 );
+            lvIdx      = string.find( lvTimeCode, ":" );
+            lvSS       = tonumber( string.sub(  lvTimeCode, 1, lvIdx - 1 ) );
+            lvFF       = tonumber( string.sub(  lvTimeCode, lvIdx + 1 ) );
+            HyperDeckCue( lvHyperDeck, lvHH, lvMM, lvSS, lvFF );
+     elseif lvCommand == "TOGGLELOOPMODE" then
+            if HyperDeckGetLoopMode( lvHyperDeck ) == true then
+               HyperDeckSetLoopMode( lvHyperDeck, "FALSE" );
+            else
+               HyperDeckSetLoopMode( lvHyperDeck, "TRUE" );
+            end;
+     elseif lvCommand == "TOGGLESINGLECLIPMODE" then
+            if HyperDeckGetSingleClipMode( lvHyperDeck ) == true then
+               HyperDeckSetSingleClipMode( lvHyperDeck, "FALSE" );
+            else
+               HyperDeckSetSingleClipMode( lvHyperDeck, "TRUE" );
+            end;
+     elseif lvCommand == "SETVIDEOCONNECTION" then
+            HyperDeckSetVideoInput( lvHyperDeck, lvType );
+     elseif lvCommand == "SETAUDIOCONNECTION" then
+            HyperDeckSetAudioInput( lvHyperDeck, lvType );
+     elseif lvCommand == "SETFILEFORMAT" then
+            HyperDeckSetFileFormat( lvHyperDeck, lvType );
+     else
+        VSLog( "HyperDeck Command not valid: ['" .. lvCommand .. "']" );
+     end;
+else                                                                              
+     VSLog( "HyperDeck Index:" .. lvHyperDeck .. " not valid." );
+end;
+
+

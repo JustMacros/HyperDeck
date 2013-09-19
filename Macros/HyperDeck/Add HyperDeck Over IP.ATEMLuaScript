@@ -1,0 +1,1 @@
+HyperDeckAddDevice( EnviroRead( "HYPERDECK_IP_ADDRESS" ), EnviroRead( "HYPERDECK_NAME" ) );

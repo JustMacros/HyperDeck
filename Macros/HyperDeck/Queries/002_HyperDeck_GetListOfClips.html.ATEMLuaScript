@@ -1,0 +1,12 @@
+CLS();
+VSLog("------------------------------------------------------------------------------------------------------");
+VSLog("    ID   Name                                       Start            End Point        Length");
+VSLog("------------------------------------------------------------------------------------------------------");
+for i = 1, HyperDeckClipCount( 1 ) do
+    VSLog( "   " .. LPad(i, 3) ..
+           "   " .. RPad( HyperDeckGetClipName(       1, i ), 40 ) ..
+           "   " .. RPad( HyperDeckGetClipStartPoint( 1, i ), 14 ) ..
+           "   " .. RPad( HyperDeckGetClipEndPoint(   1, i ), 14 ) ..
+           "   " .. RPad( HyperDeckGetClipLength(     1, i ), 14 ) );
+end;
+VSLog("------------------------------------------------------------------------------------------------------");

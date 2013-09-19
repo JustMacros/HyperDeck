@@ -1,0 +1,75 @@
+-- $$USES "JUST_MACROS_COLOURS"
+-- $$USES "JUST_MACROS_WEB_DRAWING_STANDARD_LUA"
+-- $$USES "MEDIA_SERVER_DrawingRecordTimeCode"
+-- $$USES "HYPERDECK_IMAGES_AND_GLOBALS"
+-- $$USES "HYPERDECK_DRAWING_TOOLS"
+
+function   DrawConnectionsAndFormatPanel( pvHyperDeckNumber )
+         ResponseWrite("<div style='position:absolute;" ..
+                           "background-color:#273232;"   ..
+                                       "left:5px;" ..
+                                        "top:417px;"  ..
+                                      "width:1010px;" ..
+                                     "height:45px;"  .. "'>")                                         
+           DrawModeButton( "bSDI_"         .. pvHyperDeckNumber, "SDI",         5, 8,  31, 90, "SetVideoConnection(" .. pvHyperDeckNumber .. ",\"SDI\");" )
+           DrawModeButton( "bHDMI_"        .. pvHyperDeckNumber, "HDMI",      100, 8,  31, 90, "SetVideoConnection(" .. pvHyperDeckNumber .. ",\"HDMI\");" )
+           DrawModeButton( "bComponent_"   .. pvHyperDeckNumber, "Component", 195, 8,  31, 90, "SetVideoConnection(" .. pvHyperDeckNumber .. ",\"component\");" )
+           DrawModeButton( "bEmbedded_"    .. pvHyperDeckNumber, "Embedded",  300, 8,  31, 90, "SetAudioConnection(" .. pvHyperDeckNumber .. ",\"embedded\");" )
+           DrawModeButton( "bXLR_"         .. pvHyperDeckNumber, "XLR",       395, 8,  31, 90, "SetAudioConnection(" .. pvHyperDeckNumber .. ",\"XLR\");" )
+           DrawModeButton( "bRCA_"         .. pvHyperDeckNumber, "RCA",       490, 8,  31, 90, "SetAudioConnection(" .. pvHyperDeckNumber .. ",\"RCA\");" )
+
+           DrawModeButton( "bUncompressed_"   .. pvHyperDeckNumber, "Unc",       630, 8,  31, 48, "SetFileFormat("      .. pvHyperDeckNumber .. ",\"QuickTimeUncompressed\");" )
+           DrawModeButton( "bQuickTimeDNXHD_" .. pvHyperDeckNumber, "xHD",       683, 8,  31, 48, "SetFileFormat("      .. pvHyperDeckNumber .. ",\"QuickTimeDNxHD220\");" )
+           DrawModeButton( "bDNxHD_"          .. pvHyperDeckNumber, "MXF",       736, 8,  31, 48, "SetFileFormat("      .. pvHyperDeckNumber .. ",\"DNxHD220\");" )
+           DrawModeButton( "bProResHQ_"       .. pvHyperDeckNumber, "HQ",        789, 8,  31, 48, "SetFileFormat("      .. pvHyperDeckNumber .. ",\"QuickTimeProResHQ\");" )
+           DrawModeButton( "bProRes422_"      .. pvHyperDeckNumber, "422",       842, 8,  31, 48, "SetFileFormat("      .. pvHyperDeckNumber .. ",\"QuickTimeProRes422\");" )
+           DrawModeButton( "bProResLT_"       .. pvHyperDeckNumber, "LT",        895, 8,  31, 48, "SetFileFormat("      .. pvHyperDeckNumber .. ",\"QuickTimeProResLT\");" )
+           DrawModeButton( "bProResProxy_"    .. pvHyperDeckNumber, "Proxy",     948, 8,  31, 48, "SetFileFormat("      .. pvHyperDeckNumber .. ",\"QuickTimeProResProxy\");" )
+         ResponseWrite("</div>");
+end;
+
+
+function DrawHyperDeckController( pvHyperDeckNumber, pvLeft, pvTop )
+         DrawContainingPanel(   "pnlHyperDeck" .. pvHyperDeckNumber,           pvLeft, pvTop, 468, 1024 )
+           -- Draw a Couple of Buttons to indicate the HyperDeck Slots
+           DrawModeButton(      "bSlot_"       .. pvHyperDeckNumber .. "_1", "SLOT 1",   5, 26,  45, 100, "SelectHyperDeckSlot(" .. pvHyperDeckNumber .. ",1 );" )
+           DrawModeButton(      "bSlot_"       .. pvHyperDeckNumber .. "_2", "SLOT 2", 110, 26,  45, 100, "SelectHyperDeckSlot(" .. pvHyperDeckNumber .. ",2 );" )
+
+           -- Draw the Loop and Single Clip mode buttons
+           DrawModeButton(      "bLoop_"       .. pvHyperDeckNumber, "LOOP",        215,  5,  31, 130, "ToggleHyperDeckLoopMode("       .. pvHyperDeckNumber .. ");" )
+           DrawModeButton(      "bSingleClip_" .. pvHyperDeckNumber, "SINGLE CLIP", 215, 40,  31, 130, "ToggleHyperDeckSingleClipMode(" .. pvHyperDeckNumber .. ");" )
+
+           -- Draw a Status Panel
+           DrawHyperDeckStatusPanel( pvHyperDeckNumber,   5,  76, 336, 340 )
+
+           -- Draw the List Of Clips of Clips
+           DrawHyperDeckClipsList(   pvHyperDeckNumber, 350, 150, 150, 665 );
+
+           -- Draw Media Navigation Buttons
+           DrawModeImageButton( "bNAV_" .. pvHyperDeckNumber .. "_FIRST",   "FIRST",   350,  5,  66,  82, "HyperDeck_First("    .. pvHyperDeckNumber .. ");", BUTTON_IMAGE_FIRST() );
+           DrawModeImageButton( "bNAV_" .. pvHyperDeckNumber .. "_REWIND",  "REWIND",  437,  5,  66,  82, "HyperDeck_Previous(" .. pvHyperDeckNumber .. ");", BUTTON_IMAGE_PREVIOUS() );
+           DrawModeImageButton( "bNAV_" .. pvHyperDeckNumber .. "_PAUSE",   "PAUSE",   524,  5,  66,  82, "HyperDeck_Pause("    .. pvHyperDeckNumber .. ");", BUTTON_IMAGE_PAUSE() );
+           DrawModeImageButton( "bNAV_" .. pvHyperDeckNumber .. "_PLAY",    "PLAY",    524,  5,  66,  82, "HyperDeck_Play("     .. pvHyperDeckNumber .. ");", BUTTON_IMAGE_PLAY() );
+           DrawModeImageButton( "bNAV_" .. pvHyperDeckNumber .. "_FORWARD", "FORWARD", 611,  5,  66,  82, "HyperDeck_Forward("  .. pvHyperDeckNumber .. ");", BUTTON_IMAGE_FORWARD() );
+           DrawModeImageButton( "bNAV_" .. pvHyperDeckNumber .. "_LAST",    "LAST",    698,  5,  66,  82, "HyperDeck_Last("     .. pvHyperDeckNumber .. ");", BUTTON_IMAGE_LAST() );
+           DrawModeImageButton( "bNAV_" .. pvHyperDeckNumber .. "_EJECT",   "EJECT",   825,  5,  66,  82, "HyperDeck_Eject("    .. pvHyperDeckNumber .. ");", BUTTON_IMAGE_EJECT() );
+           DrawModeImageButton( "bNAV_" .. pvHyperDeckNumber .. "_STOP",    "STOP",    912,  5,  66,  82, "HyperDeck_Stop("     .. pvHyperDeckNumber .. ");", BUTTON_IMAGE_STOP() );
+           DrawModeImageButton( "bNAV_" .. pvHyperDeckNumber .. "_RECORD",  "RECORD",  912,  5,  66,  82, "HyperDeck_Record("   .. pvHyperDeckNumber .. ");", BUTTON_IMAGE_RECORD() );
+
+           -- Draw the Timecode indication Windows
+           DrawRecordClipTimeCodeWindow(    pvHyperDeckNumber, 350, 76 );
+
+           -- Draw Clip Name Panel
+           DrawClipNamePanel( pvHyperDeckNumber );
+           DrawAdvancedCuePanel( pvHyperDeckNumber );
+           DrawConnectionsAndFormatPanel( pvHyperDeckNumber );
+
+         DrawContainingPanel_Close();
+
+         -- Call a Javascript function to make an AJAX call and update the screen
+         ResponseWrite("<script>GetHyperdeckInfomation(" .. pvHyperDeckNumber .. ")</script>")
+end;
+
+DrawHyperDeckController( 1, 5, 5 );
+
+

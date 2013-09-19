@@ -1,0 +1,91 @@
+GLOBAL_JUST_MACROS_UPLOAD_PORT              = 39935;
+GLOBAL_JUST_MACROS_IMAGES_PORT              = 39915;
+
+-- -------------------------------------------------------------------------------------------------------------------------------
+--  Functions for drawing border Panels
+-- -------------------------------------------------------------------------------------------------------------------------------
+function DrawContainingPanel( pvID, pvLeft, pvTop, pvHeight, pvWidth )
+         ResponseWrite( "<div class='VHLayout' " ..
+                                "id='"        .. pvID          .. "' "  ..
+                             "style='left:"   .. pvLeft        .. "px;" ..
+                                     "top:"   .. pvTop         .. "px;" ..
+                                   "width:"   .. pvWidth       .. "px;" ..
+                                  "height:"   .. pvHeight      .. "px;'>" );
+         ResponseWrite(   "<div class='VHLayoutInner' " ..
+                                  "id='"      .. pvID          .. "_Inner' "  ..
+                               "style='left:" .. "2"           .. "px;" ..
+                                       "top:" .. "2"           .. "px;" ..
+                                     "width:" .. pvWidth  - 4  .. "px;" ..
+                                    "height:" .. pvHeight - 4  .. "px;'>" );
+end;
+
+function DrawContainingPanel_Close()                    
+         ResponseWrite(   "</div>\n" );   
+         ResponseWrite( "</div>\n" );                
+end;
+                                         
+
+-- -------------------------------------------------------------------------------------------------------------------------------
+--  Functions for drawing Buttons
+-- -------------------------------------------------------------------------------------------------------------------------------
+function DrawModeButton( pvID, pvCaption, pvLeft, pvTop, pvHeight, pvWidth, pvCode )
+         ResponseWrite( "<div class='VISButton' " ..
+                                "id='"        .. pvID         .. "' "   ..
+                             "style='left:"   .. pvLeft       .. "px;"  ..
+                                     "top:"   .. pvTop        .. "px;"  ..
+                                   "width:"   .. pvWidth      .. "px;"  ..
+                                  "height:"   .. pvHeight     .. "px;'>" );
+           ResponseWrite( "<div class='VISButtonInner' " ..
+                                  "id='"      .. pvID         .. "_Inner' "   ..
+                             "style='left:"   .. 3            .. "px;"  ..
+                                     "top:"   .. 3            .. "px;"  ..
+                                   "width:"   .. pvWidth  - 6 .. "px;"  ..
+                                  "height:"   .. pvHeight - 6 .. "px;' " ..
+                         "onmousedown='"      .. pvCode .. "'>" );
+             ResponseWrite( "<table class='ButtonTableStyle'><tr><td class='ButtonStyle'>" .. pvCaption .. "</td></tr></table>" );
+           ResponseWrite( "</div>" );
+         ResponseWrite( "</div>" );
+end;
+
+function DrawImageButtonImgSize( pvID, pvCaption, pvLeft, pvTop, pvHeight, pvWidth, pvCode, pvImage, pvImgHeight, pvImgVOffset )
+         ResponseWrite( "<div class='MatrixButton' " ..
+                                "id='"        .. pvID         .. "' "   ..
+                             "style='left:"   .. pvLeft       .. "px;"  ..
+                                     "top:"   .. pvTop        .. "px;"  ..
+                                   "width:"   .. pvWidth      .. "px;"  ..
+                                  "height:"   .. pvHeight     .. "px;'>" );
+         ResponseWrite( "<div class='MatrixButtonInner' " ..
+                                "id='"        .. pvID         .. "_VOffset' "   ..
+                             "style='left:"   .. 3       .. "px;"  ..
+                                     "top:"   .. 3            .. "px;"  ..
+                                   "width:"   .. pvWidth - 6      .. "px;"  ..
+                                  "height:"   .. pvImgVOffset .. "px;'>" );
+           ResponseWrite( "</div>" );
+           ResponseWrite( "<div class='MatrixButtonInner' " ..
+                                  "id='"      .. pvID         .. "_Image' "   ..
+                             "style='left:"   .. 3            .. "px;"  ..
+                                     "top:"   .. pvImgVOffset + 3       .. "px;"  ..
+                                   "width:"   .. pvWidth  - 6 .. "px;"  ..
+                                  "height:"   .. pvImgHeight .. "px;' " ..
+                         "onmousedown='"      .. pvCode .. "'>" );
+           ResponseWrite(   "<img id='"      .. pvID         .. "_ImageImg' src='" .. pvImage .. "' style='left:0px;top:0px;height:" .. pvImgHeight .. "px;width:" .. ( pvWidth  - 6 ) .. "px;'>" );
+           ResponseWrite( "</div>" );
+           ResponseWrite( "<div class='MatrixButtonInner' "    ..
+                                  "id='"      .. pvID          .. "_Inner' "   ..
+                             "style='left:"   .. 3             .. "px;"  ..
+                                     "top:"   .. (pvImgHeight + pvImgVOffset) + 3  .. "px;"  ..
+                                   "width:"   .. pvWidth  - 6  .. "px;"  ..
+                                  "height:"   .. pvHeight - ( (pvImgHeight + pvImgVOffset) + 6 ) .. "px;' " ..
+                         "onmousedown='"      .. pvCode .. "'>" );
+             ResponseWrite( "<table class='ButtonTableStyle'><tr><td class='ButtonStyle'>" .. pvCaption .. "</td></tr></table>" );
+           ResponseWrite( "</div>" );
+         ResponseWrite( "</div>" );
+end;
+
+function DrawModeImageButton( pvID, pvCaption, pvLeft, pvTop, pvHeight, pvWidth, pvCode, pvImage )
+         DrawImageButtonImgSize( pvID, pvCaption, pvLeft, pvTop, pvHeight, pvWidth, pvCode, pvImage, 38, 0 );
+end;
+
+function DrawPlaybackImageButton( pvID, pvCaption, pvLeft, pvTop, pvHeight, pvWidth, pvCode, pvImage )
+         DrawImageButtonImgSize( pvID, pvCaption, pvLeft, pvTop, pvHeight, pvWidth, pvCode, pvImage, 30, 4 );
+end;                                          

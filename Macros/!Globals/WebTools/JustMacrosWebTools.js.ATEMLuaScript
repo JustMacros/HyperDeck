@@ -1,0 +1,21 @@
+ResponseWrite(   "function JUSTMACROS_SERVER_ADDRESS() {" );
+ResponseWrite(            "return '" .. EnviroRead( "USE_WEB_SERVER_ADDRESS" ) .. "';" );
+ResponseWrite(   "}" );
+
+ResponseWrite(   "function JUSTMACROS_SERVER_PORT() {" );
+ResponseWrite(            "return " .. EnviroRead( "USE_WEB_PORT" ) .. ";" );
+ResponseWrite(   "}" );
+
+ResponseWrite(   "function ResponseQry( pvQryStringURL ) {" );
+ResponseWrite(            "tStr = 'http://' + JUSTMACROS_SERVER_ADDRESS() + ':' + JUSTMACROS_SERVER_PORT() + '/' + pvQryStringURL;" );
+ResponseWrite(            "xmlhttp = new XMLHttpRequest();" );
+ResponseWrite(            "try {" );
+ResponseWrite(                   "xmlhttp.open('POST', tStr, false);" );
+ResponseWrite(                   "xmlhttp.send();" );
+ResponseWrite(            "} catch (err) {" );
+ResponseWrite(            "}" );
+ResponseWrite(            "lvResult = xmlhttp.responseText;" );
+ResponseWrite(            "return lvResult;" );
+ResponseWrite(   "}" );
+
+ResponseWriteJS( "JUST_MACROS_WEB_DRAWING_STANDARD" );                                      

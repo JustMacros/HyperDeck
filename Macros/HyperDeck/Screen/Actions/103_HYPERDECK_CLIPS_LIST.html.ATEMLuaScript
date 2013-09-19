@@ -1,0 +1,58 @@
+function ReadQueryString()
+         lvHyperDeck = tonumber( QueryString[ "HYPERDECK" ] );
+end;
+
+if pcall( ReadQueryString ) == false then
+   lvHyperDeck = 1;
+end;
+
+--
+-- -----------------------------------------------------------------
+ResponseWrite("<table id='tblHyperDeck_" .. lvHyperDeck .. "_ClipList' style='width:610px;'>")
+
+ResponseWrite( "<tr>" );
+ResponseWrite(   "<td class='MIDITableHeader' style='width:30px;'>ID</td>" );
+ResponseWrite(   "<td class='MIDITableHeader' style='width:335px;'>Name</td>" );
+ResponseWrite(   "<td class='MIDITableHeader' style='width:85px;'>In-point</td>" );
+ResponseWrite(   "<td class='MIDITableHeader' style='width:85px;'>Out-point</td>" );
+ResponseWrite(   "<td class='MIDITableHeader' style='width:85px;'>Length</td>" );
+ResponseWrite( "</tr>" );
+
+for i = 1, HyperDeckClipCount( lvHyperDeck ) do
+    lvClassName = "NotHighlighted";
+    if i == HyperDeckGetCurrentClipNumber( lvHyperDeck ) then
+       lvClassName = "GreenRowTableHighlight";
+    else
+    end;
+    ResponseWrite( "<tr>" );
+    ResponseWrite(   "<td class='" .. lvClassName .. "' style='cursor:pointer;text-align:right;width:30px;' " ..
+                                                 "onmousedown='SelectClip(" .. lvHyperDeck .. "," .. i .. ");' " ..
+                                                  "ondblclick='CueClip("    .. lvHyperDeck .. "," .. i .. ");' >" );
+    ResponseWrite(     i );
+    ResponseWrite(   "</td>" );
+    ResponseWrite(   "<td class='" .. lvClassName .. "' style='cursor:pointer;text-align:left;width:225px;' " ..
+                                                 "onmousedown='SelectClip(" .. lvHyperDeck .. "," .. i .. ");' " ..
+                                                  "ondblclick='CueClip("    .. lvHyperDeck .. "," .. i .. ");' >" );
+    ResponseWrite(     HyperDeckGetClipName( lvHyperDeck, i ) );
+    ResponseWrite(   "</td>" );
+    ResponseWrite(   "<td class='" .. lvClassName .. "' style='cursor:pointer;text-align:right;width:65px;' " ..
+                                                 "onmousedown='SelectClip(" .. lvHyperDeck .. "," .. i .. ");' " ..
+                                                  "ondblclick='CueClip("    .. lvHyperDeck .. "," .. i .. ");' >" );
+    ResponseWrite(     HyperDeckGetClipStartPoint( lvHyperDeck, i ) );
+    ResponseWrite(   "</td>" );
+    ResponseWrite(   "<td class='" .. lvClassName .. "' style='cursor:pointer;text-align:right;width:65px;' " ..
+                                                 "onmousedown='SelectClip(" .. lvHyperDeck .. "," .. i .. ");' " ..
+                                                  "ondblclick='CueClip("    .. lvHyperDeck .. "," .. i .. ");' >" );
+    ResponseWrite(     HyperDeckGetClipEndPoint( lvHyperDeck, i ) );
+    ResponseWrite(   "</td>" );
+    ResponseWrite(   "<td class='" .. lvClassName .. "' style='cursor:pointer;text-align:right;width:65px;' " ..
+                                                 "onmousedown='SelectClip(" .. lvHyperDeck .. "," .. i .. ");' " ..
+                                                  "ondblclick='CueClip(" .. lvHyperDeck .. "," .. i .. ");' >" );
+    ResponseWrite(     HyperDeckGetClipLength( lvHyperDeck, i ) );
+    ResponseWrite(   "</td>" );
+    ResponseWrite( "</tr>" );
+end;
+ResponseWrite("</table>")
+
+
+

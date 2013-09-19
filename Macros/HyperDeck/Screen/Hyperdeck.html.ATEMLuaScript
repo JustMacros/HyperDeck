@@ -1,0 +1,16 @@
+-- ---------------------------------------------------------------------------------------------------------------------------------
+--  This is the main entry point for the HyperDeck GUI
+-- ---------------------------------------------------------------------------------------------------------------------------------
+-- $$USES "JUST_MACROS_COLOURS"
+-- $$USES "100_HYPERDECK_GLOBALS_LUA"
+-- http://192.168.254.151:39812/HyperDeck.html
+
+ResponseWriteHTML( "001_HYPERDECK_HEADER"     );
+ResponseWriteCSS(  "002_HYPERDECK_STYLE"      );
+ResponseWrite(      AddJustMacrosMIDIStyles() );
+ResponseWriteHTML( "003_HYPERDECK_HEADER_END" );
+ResponseWriteHTML( "006_HYPERDECK_LAYOUT"     );
+ResponseWrite(     "<script>"                 );
+ResponseWrite(       "StartUpdateTimers();"   );
+ResponseWrite(     "</script>"                );
+ResponseWriteHTML( "007_HYPERDECK_FOOTER"     );

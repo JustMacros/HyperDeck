@@ -1,0 +1,37 @@
+-- -----------------------------------------------------------------------------------------------
+-- These first two Environment variables control how any GUI screens will refer to this computer
+--  * The safest thing to do is to use a static IP address for your JustMacros computer
+--    and use the statiuc IP Address here
+--  * 'localhost' can work, but can also be problematic depending on your installed security
+--  * If running on a domain controlled network, it is best to use the HostName of the computer
+--    here
+--
+--  The Port is what you are running the main web server port on, by default this is 39812, but
+--  if you have setup your shortcut with /PrimaryWebServer, then you should change this number
+--  to port 80
+-- -----------------------------------------------------------------------------------------------
+EnviroWrite( "USE_WEB_SERVER_ADDRESS", "localhost" );
+-- EnviroWrite( "USE_WEB_SERVER_ADDRESS", "192.168.254.151" );
+EnviroWrite( "USE_WEB_PORT", 39812 );
+-- EnviroWrite( "USE_WEB_PORT", 80 );
+
+-- -----------------------------------------------------------------------------------------------
+--  These next two environment variables control your Hyperdeck Connection, make sure they are set
+--  to the IP Address and a descriptive name of your HyperDeck
+-- -----------------------------------------------------------------------------------------------
+EnviroWrite( "HYPERDECK_IP_ADDRESS", "192.168.254.175" );
+EnviroWrite( "HYPERDECK_NAME", "Desk Hyperdeck" );
+
+-- -----------------------------------------------------------------------------------------------
+--  Now we connect to the HyperDeck
+-- -----------------------------------------------------------------------------------------------
+-- ScriptExecuteBG( "Add HyperDeck Over IP" );
+
+-- -----------------------------------------------------------------------------------------------
+--  Now Add a Button to the Menu to Open the Hyperdeck Screen
+-- -----------------------------------------------------------------------------------------------
+GUIButtonSetCaption( 1, "HYPERDECK" );
+GUIButtonSetScript(  1, "Open Hyperdeck screen" );
+GUIButtonSetEnabled( 1, "TRUE" );
+
+

@@ -1,0 +1,7 @@
+lvBrowserWindowID = BrowserWindowNavigate( "http://" .. EnviroRead( "USE_WEB_SERVER_ADDRESS" ) .. ":" .. EnviroRead( "USE_WEB_PORT" ) .. "/Hyperdeck.html" );
+BrowserWindowSetHeight(      lvBrowserWindowID,   503  );
+BrowserWindowSetWidth(       lvBrowserWindowID,  1060  );
+BrowserWindowSetCaption(     lvBrowserWindowID, "Just Macros HyperDeck Controller" );
+BrowserWindowSetLeft(        lvBrowserWindowID,    10  );
+BrowserWindowSetTop(         lvBrowserWindowID,    10  );
+BrowserWindowSetBorderStyle( lvBrowserWindowID, "TOOL" );

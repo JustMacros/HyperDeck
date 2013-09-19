@@ -1,0 +1,59 @@
+CLS();
+VSLog(    "------------------------------------------------------------------------------------------------------------" );
+VSLog(    "      HyperDeck IP Address : " .. HyperDeckGetIPAdress(   1 ) );
+VSLog(    "            HyperDeck Name : " .. HyperDeckGetName(       1 ) );
+VSLog(    "     HyperDeck Device Type : " .. HyperDeckGetDeviceType( 1 ) );
+VSLog(    "HyperDeck Protocol Version : " .. HyperDeckGetProtocolVersion( 1 ) );
+VSLog(    "               Video Input : " .. HyperDeckGetVideoInput( 1 ) );
+VSLog(    "               Audio Input : " .. HyperDeckGetAudioInput( 1 ) );
+VSLog(    "               File Format : " .. HyperDeckGetFileFormat( 1 ) );
+VSLog(    "------------------------------------------------------------------------------------------------------------" );
+VSLog(    "        Slot 1 Volume Name : " .. HyperDeckGetSlotVolumeName( 1, 1 ) );
+VSLog(    "        Slot 1 Record Time : " .. HyperDeckGetSlotRecordTime( 1, 1 ) );
+VSLog(    "        Slot 1      Status : " .. HyperDeckGetSlotStatus( 1, 1 ) );
+VSLog(    "        Slot 2 Volume Name : " .. HyperDeckGetSlotVolumeName( 1, 2 ) );
+VSLog(    "        Slot 2 Record Time : " .. HyperDeckGetSlotRecordTime( 1, 2 ) );
+VSLog(    "        Slot 2      Status : " .. HyperDeckGetSlotStatus( 1, 2 ) );
+VSLog(    "------------------------------------------------------------------------------------------------------------" );
+VSLog(    "               Active Slot : " .. HyperDeckGetActiveSlot( 1 ) );
+VSLog(    "------------------------------------------------------------------------------------------------------------" );
+VSLog(    "            Playback Speed : " .. HyperDeckGetSpeed( 1 ) );
+VSLog(    "                    Status : " .. HyperDeckGetStatus( 1 ) );
+VSLog(    "                  Timecode : " .. HyperDeckGetTimeCode( 1 ) );
+VSLog(    "          Display Timecode : " .. HyperDeckGetDisplayTimeCode( 1 ) );
+if HyperDeckGetLoopMode( 1 ) == true then
+   VSLog( "                 Loop Mode : " .. "ENABLED" );
+else
+   VSLog( "                 Loop Mode : " .. "DISABLED" );
+end;
+
+if HyperDeckGetSingleClipMode( 1 ) == true then
+   VSLog( "          Single Clip Mode : " .. "ENABLED" );
+else
+   VSLog( "          Single Clip Mode : " .. "DISABLED" );
+end;
+                                  
+if HyperDeckGetNotify(1, "TRANSPORT") == true then
+   VSLog( "  Notify Transport Changes : " .. "ENABLED" );                    
+else
+   VSLog( "  Notify Transport Changes : " .. "DISABLED" );
+end;
+
+if HyperDeckGetNotify(1, "SLOT") == true then
+   VSLog( "       Notify Slot Changes : " .. "ENABLED" );
+else
+   VSLog( "       Notify Slot Changes : " .. "DISABLED" );
+end;
+
+if HyperDeckGetNotify(1, "REMOTE") == true then
+   VSLog( "     Notify Remote Changes : " .. "ENABLED" );
+else
+   VSLog( "     Notify Remote Changes : " .. "DISABLED" );
+end;
+
+if HyperDeckGetNotify(1, "CONFIG") == true then
+   VSLog( "    Notify Config. Changes : " .. "ENABLED" );
+else
+   VSLog( "    Notify Config. Changes : " .. "DISABLED" );
+end;
+

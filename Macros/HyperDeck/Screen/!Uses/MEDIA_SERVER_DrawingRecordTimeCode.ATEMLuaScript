@@ -1,0 +1,179 @@
+function DrawRecordClipTimeCodeWindow(        pvChannelNo, pvLeft, pvTop )
+         ResponseWrite( "<div class='VHLayoutInner' " ..
+                                "id='"        .. "divRecTC" .. pvChannelNo .. "' "    ..
+                             "style='left:"   .. pvLeft   .. "px;"   ..
+                                     "top:"   ..  pvTop   .. "px;"   ..
+                                   "width:"   .. 180      .. "px;"   ..
+                                  "height:"   ..  70      .. "px;"   ..
+--                        "background-color:"   .. "red"  .. ";"   ..
+                        "background-color:"   .. CONST_VIS_COLOR_BORDER  .. ";"   ..
+                                  "'>" );
+
+         ResponseWrite(   "<div class='VHLayoutInner' " ..
+                                  "id='"        .. "divRecTC_Title" .. pvChannelNo .. "' "    ..                   
+                               "style='left:"   ..   1      .. "px;"   ..
+                                       "top:"   ..   1      .. "px;"   ..
+                                     "width:"   .. 178      .. "px;"   ..
+                                    "height:"   ..  20      .. "px;"   ..
+                          "background-color:"   .. CONST_VIS_COLOR_DARKBG  .. ";"   ..
+                                    "'>" );
+         ResponseWrite(    "<table><tr><td style='font-size:7pt;color:white;" ..
+--                                                     "color:" .. CONST_VIS_COLOR_RED .. ";" ..
+                                                 "'>Record Clock</td></tr></table>" );
+         ResponseWrite(   "</div>" );
+         ResponseWrite(   "<div class='VHLayoutInner' " ..
+                                  "id='"        .. "divRecTC_Body" .. pvChannelNo .. "' "    ..
+                               "style='left:"   ..   1      .. "px;"   ..
+                                       "top:"   ..  22      .. "px;"   ..
+                                     "width:"   .. 178      .. "px;"   ..
+                                    "height:"   ..  47      .. "px;"   ..
+                          "background-color:"   .. CONST_VIS_COLOR_BG  .. ";"   ..
+                                    "'>" );
+
+         ResponseWrite(   "<div class='VHLayoutInner' " ..
+                                  "id='"        .. "divRecTC_Body1" .. pvChannelNo .. "' "    ..
+                               "style='left:"   ..   2      .. "px;"   ..
+                                       "top:"   ..   1      .. "px;"   ..
+                                     "width:"   .. 174      .. "px;"   ..
+                                    "height:"   ..  45      .. "px;"   ..                              
+                          "background-color:"   .. "black"  .. ";"   ..
+                                    "'>" );
+         ResponseWrite(     "<table>" );
+         ResponseWrite(       "<tr>" );
+         ResponseWrite(         "<td style='font-size:7pt;color:white;background-color:none;text-align:left;'>" );
+         ResponseWrite(           "<input type='text' id='eRecClockTC" .. pvChannelNo .. "' " ..
+                                                   "style='border:none;" ..
+                                                  "background-color:black;" ..
+                                                             "width:100%;" ..
+                                                            "height:100%;" ..
+                                                        "text-align:center;" ..
+                                                         "font-size:22pt;" ..
+                                                             "color:" .. CONST_VIS_COLOR_RED .. ";' " ..
+                                                    "value='00:00:00:00'>" );
+         ResponseWrite(         "</td>" );
+         ResponseWrite(       "</tr>" );
+         ResponseWrite(     "</table>" );
+
+         ResponseWrite(   "</div>" );
+         ResponseWrite(   "</div>" );
+         ResponseWrite(   "</div>" );
+end;
+
+function DrawRemainingClipTimeCodeWindow(        pvChannelNo, pvLeft, pvTop )
+         ResponseWrite( "<div class='VHLayoutInner' " ..
+                                "id='"        .. "divRecTCR" .. pvChannelNo .. "' "    ..
+                             "style='left:"   .. pvLeft      .. "px;"   ..
+                                     "top:"   .. pvTop    .. "px;"   ..
+                                   "width:"   .. 180      .. "px;"   ..
+                                  "height:"   ..  70      .. "px;"   ..
+--                        "background-color:"   .. "red"  .. ";"   ..
+                        "background-color:"   .. CONST_VIS_COLOR_BORDER  .. ";"   ..
+                                  "'>" );
+
+         ResponseWrite(   "<div class='VHLayoutInner' " ..
+                                  "id='"        .. "divRecTCR_Title" .. pvChannelNo .. "' "    ..
+                               "style='left:"   ..   1      .. "px;"   ..
+                                       "top:"   ..   1      .. "px;"   ..
+                                     "width:"   .. 178      .. "px;"   ..
+                                    "height:"   ..  20      .. "px;"   ..
+                          "background-color:"   .. CONST_VIS_COLOR_DARKBG  .. ";"   ..
+                                    "'>" );
+         ResponseWrite(    "<table><tr><td style='font-size:7pt;color:white;'>Remaining</td></tr></table>" );
+         ResponseWrite(   "</div>" );
+         ResponseWrite(   "<div class='VHLayoutInner' " ..
+                                  "id='"        .. "divRecTCR_Body" .. pvChannelNo .. "' "    ..
+                               "style='left:"   ..   1      .. "px;"   ..
+                                       "top:"   ..  22      .. "px;"   ..
+                                     "width:"   .. 178      .. "px;"   ..
+                                    "height:"   ..  47      .. "px;"   ..
+                          "background-color:"   .. CONST_VIS_COLOR_BG  .. ";"   ..
+                                    "'>" );
+
+         ResponseWrite(   "<div class='VHLayoutInner' " ..
+                                  "id='"        .. "divRecTCR_Body1" .. pvChannelNo .. "' "    ..
+                               "style='left:"   ..   2      .. "px;"   ..
+                                       "top:"   ..   1      .. "px;"   ..
+                                     "width:"   .. 174      .. "px;"   ..
+                                    "height:"   ..  45      .. "px;"   ..
+                          "background-color:"   .. "black"  .. ";"   ..
+                                    "'>" );
+         ResponseWrite(     "<table>" );
+         ResponseWrite(       "<tr>" );
+         ResponseWrite(         "<td style='font-size:7pt;color:white;background-color:none;text-align:left;'>" );
+         ResponseWrite(           "<input type='text' style='border:none;" ..
+                                                  "background-color:black;" ..
+                                                             "width:100%;" ..
+                                                            "height:100%;" ..
+                                                        "text-align:center;" ..
+                                                         "font-size:22pt;" ..
+                                                             "color:" .. CONST_VIS_COLOR_GREEN .. ";' " ..
+                                                    "value='00:00:00:00'>" );
+         ResponseWrite(         "</td>" );
+         ResponseWrite(       "</tr>" );
+         ResponseWrite(     "</table>" );
+         ResponseWrite(   "</div>" );
+         ResponseWrite(   "</div>" );
+         ResponseWrite(   "</div>" );
+
+end;
+
+
+function DrawCueTimeCodeWindow(        pvChannelNo, pvLeft, pvTop )
+         ResponseWrite( "<div class='VHLayoutInner' " ..
+                                "id='"        .. "divRecCUE" .. pvChannelNo .. "' "    ..
+                             "style='left:"   .. pvLeft      .. "px;"   ..
+                                     "top:"   .. pvTop    .. "px;"   ..
+                                   "width:"   .. 180      .. "px;"   ..
+                                  "height:"   ..  70      .. "px;"   ..
+--                        "background-color:"   .. "red"  .. ";"   ..
+                        "background-color:"   .. CONST_VIS_COLOR_BORDER  .. ";"   ..
+                                  "'>" );
+
+         ResponseWrite(   "<div class='VHLayoutInner' " ..
+                                  "id='"        .. "divRecCUE_Title" .. pvChannelNo .. "' "    ..
+                               "style='left:"   ..   1      .. "px;"   ..
+                                       "top:"   ..   1      .. "px;"   ..
+                                     "width:"   .. 178      .. "px;"   ..
+                                    "height:"   ..  20      .. "px;"   ..
+                          "background-color:"   .. CONST_VIS_COLOR_DARKBG  .. ";"   ..
+                                    "'>" );
+         ResponseWrite(    "<table><tr><td style='font-size:7pt;color:white;'>Cue to Timecode</td></tr></table>" );
+         ResponseWrite(   "</div>" );
+         ResponseWrite(   "<div class='VHLayoutInner' " ..
+                                  "id='"        .. "divRecTCR_Body" .. pvChannelNo .. "' "    ..
+                               "style='left:"   ..   1      .. "px;"   ..
+                                       "top:"   ..  22      .. "px;"   ..
+                                     "width:"   .. 178      .. "px;"   ..
+                                    "height:"   ..  47      .. "px;"   ..
+                          "background-color:"   .. CONST_VIS_COLOR_BG  .. ";"   ..
+                                    "'>" );
+
+         ResponseWrite(   "<div class='VHLayoutInner' " ..
+                                  "id='"        .. "divRecCUE_Body1" .. pvChannelNo .. "' "    ..
+                               "style='left:"   ..   2      .. "px;"   ..
+                                       "top:"   ..   1      .. "px;"   ..
+                                     "width:"   .. 174      .. "px;"   ..
+                                    "height:"   ..  45      .. "px;"   ..
+                          "background-color:"   .. "black"  .. ";"   ..
+                                    "'>" );
+         ResponseWrite(     "<table>" );
+         ResponseWrite(       "<tr>" );
+         ResponseWrite(         "<td style='font-size:7pt;color:white;background-color:none;text-align:left;'>" );
+         ResponseWrite(           "<input type='text' id='eRecClockCUE" .. pvChannelNo .. "' " ..
+                                                     "style='border:none;" ..
+                                                  "background-color:black;" ..
+                                                             "width:100%;" ..
+                                                            "height:100%;" ..
+                                                        "text-align:center;" ..
+                                                         "font-size:22pt;" ..
+                                                             "color:" .. CONST_VIS_COLOR_GREEN .. ";' " ..
+                                                    "value='00:00:00:00'>" );
+         ResponseWrite(         "</td>" );
+         ResponseWrite(       "</tr>" );
+         ResponseWrite(     "</table>" );
+         ResponseWrite(   "</div>" );
+         ResponseWrite(   "</div>" );
+         ResponseWrite(   "</div>" );
+
+end;
+

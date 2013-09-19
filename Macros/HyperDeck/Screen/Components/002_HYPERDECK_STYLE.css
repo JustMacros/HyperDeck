@@ -1,0 +1,98 @@
+       body                             { border:none;
+                                       font-size:8pt;
+                                     font-family:Verdana,Tahoma;
+                                background-color:#324040;
+                                           color:#8D9CA6; }
+       div.VHLayout                   { position:absolute;
+                                background-color:#475353;
+                                             top:10px;
+                                          height:600px;
+                                           width:400px; }
+       div.VHLayoutInner              { position:absolute;
+                                background-color:#324040;
+                                             top:2px;
+                                          height:596px;
+                                           width:396px;
+                                            left:2px; }                 
+       div.MatrixButton               { position:absolute;
+                                background-color:#8D9CA6;
+                                          height:74px;
+                                           width:80px; }
+       div.MatrixButtonInner          { position:absolute;
+                                background-color:#324040;                                       
+                                          height:70px;
+                                           width:76px;
+                                            left:2px;
+                                             top:2px;
+                                          cursor:pointer;
+                                           color:#8D9CA6; }
+
+       div.VISButton                  { position:absolute;
+                                background-color:#8D9CA6; }
+       div.VISButtonInner             { position:absolute;
+                                background-color:#324040;
+                                          cursor:pointer;
+                                           color:#8D9CA6; }
+
+       div.VISButtonDisabled          { position:absolute;
+                                background-color:#475353; }
+       div.VISButtonDisabledInner     { position:absolute;
+                                background-color:#324040;
+                                          cursor:pointer;
+                                           color:#475353; }
+
+
+       div.VISButtonYellow            { position:absolute;
+                                background-color:#F5BD16; }
+       div.VISButtonYellowInner       { position:absolute;
+                                background-color:#F5BD16;
+                                          cursor:pointer;
+                                           color:black; }
+
+       div.VISButtonRed               { position:absolute;
+                                background-color:#FF2E3F; }
+       div.VISButtonRedInner          { position:absolute;
+                                background-color:#324040;
+                                          cursor:pointer;
+                                           color:#FF2E3F; }
+
+       div.VISButtonBlue              { position:absolute;
+                                background-color:#4FB3BF; }
+       div.VISButtonBlueInner         { position:absolute;
+                                background-color:#324040;
+                                          cursor:pointer;
+                                           color:#4FB3BF; }
+
+
+       div.MatrixButtonHighlight      { position:absolute;
+                                background-color:#F5BD16;
+                                          height:74px;
+                                           width:80px; }
+       div.MatrixButtonInnerHighlight { position:absolute;
+                                background-color:#F5BD16;
+                                          height:70px;
+                                           width:76px;
+                                            left:2px;
+                                             top:2px;
+                                          cursor:pointer;
+                                           color:black; }
+       table.ButtonTableStyle         {    width:100%;
+                                          height:100%;
+                                  padding-bottom:0;
+                                   border-bottom:0; }
+       td.ButtonStyle           { vertical-align:center;
+                                      text-align:center;
+                                     font-family:Verdana,Tahoma;
+                                       font-size:10pt;}
+
+       td.RightAlignedGridCol   { vertical-align:center;
+                                      text-align:right;
+                                     font-family:Verdana,Tahoma;
+                                       font-size:8pt;}
+
+       td.LeftAlignedGridCol    { vertical-align:center;
+                                      text-align:left;
+                                     font-family:Verdana,Tahoma;
+                                     font-weight:bold;
+                                       font-size:8pt;}
+

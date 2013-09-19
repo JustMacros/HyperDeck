@@ -1,0 +1,8 @@
+ResponseWrite( "<!DOCTYPE html>" );
+ResponseWrite( "<html>" );
+ResponseWrite(   "<body>" );
+ResponseWrite(     "<script>" );
+ResponseWrite(       "window.location.href = 'http://" .. EnviroRead("USE_WEB_SERVER_ADDRESS") .. ":" .. EnviroRead("USE_WEB_PORT") .. "/HyperDeck.html';" );
+ResponseWrite(     "</script>" );
+ResponseWrite(   "</body>" );
+ResponseWrite( "</html>" );                                                                  

@@ -1,0 +1,14 @@
+-- -------------------------------------------------------------------------------------------------------------------------------
+--  Colours
+-- -------------------------------------------------------------------------------------------------------------------------------
+CONST_VIS_COLOR_BG                          = "#324040";
+CONST_VIS_COLOR_RED                         = "#FF2E3F";
+CONST_VIS_COLOR_YELLOW                      = "#F5BD16";
+CONST_VIS_COLOR_DARKBG                      = "#273232";
+CONST_VIS_COLOR_BORDER                      = "#8D9CA6";
+CONST_VIS_COLOR_GREEN                       = "#40A080";
+CONST_VIS_COLOR_BLUE                        = "#4FB3BF";
+CONST_VIS_COLOR_DISABLED                    = "#475353";
+CONST_VIS_COLOR_BLACK                       = "#000000";
+CONST_VIS_COLOR_WHITE                       = "#FFFFFF";
+

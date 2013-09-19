@@ -1,0 +1,37 @@
+
+function AddJustMacrosMIDIStyles()
+   local tStr =         " input[type=button] "         ..      "{font-family:" .. "Tahoma,Verdana,Arial" .. ";" ..
+                                                                  "font-size:" .. "smaller"              .. ";}"
+         tStr = tStr .. " table "                      ..   "{border-spacing:" .. "0px"                  .. ";" ..
+                                                                      "width:" .. "100%"                 .. ";" ..
+                                                             "padding-bottom:" .. "0px"                  .. ";" ..
+                                                              "border-bottom:" .. "0px"                  .. ";}"
+         tStr = tStr .. " td "                         ..   "{vertical-align:" .. "center"               .. ";" ..
+                                                                 "text-align:" .. "center"               .. ";" ..
+                                                                "font-family:" .. "Verdana,Tahoma"       .. ";" ..
+                                                                  "font-size:" .. "8pt"                 .. ";}" 
+         tStr = tStr .. " td.RedRowTableHighlight "    .. "{background-color:" .. CONST_VIS_COLOR_RED    .. ";" ..
+                                                             "border-spacing:" .. "0px"                  .. ";" ..
+                                                            "border-collapse:" .. "collapse"             .. ";" ..
+                                                                      "color:" .. CONST_VIS_COLOR_WHITE  .. ";}"
+         tStr = tStr .. " td.YellowRowTableHighlight " .. "{background-color:" .. CONST_VIS_COLOR_YELLOW .. ";" ..
+                                                             "border-spacing:" .. "0px"                  .. ";" ..
+                                                            "border-collapse:" .. "collapse"             .. ";" ..
+                                                                      "color:" .. CONST_VIS_COLOR_BLACK  .. ";}"
+         tStr = tStr .. " td.GreenRowTableHighlight "  .. "{background-color:" .. CONST_VIS_COLOR_GREEN  .. ";" ..
+                                                             "border-spacing:" .. "0px"                  .. ";" ..
+                                                            "border-collapse:" .. "collapse"             .. ";" ..
+                                                                      "color:" .. CONST_VIS_COLOR_WHITE  .. ";}"
+         tStr = tStr .. " td.BlueRowTableHighlight "   .. "{background-color:" .. CONST_VIS_COLOR_BLUE   .. ";" ..
+                                                             "border-spacing:" .. "0px"                  .. ";" ..
+                                                            "border-collapse:" .. "collapse"             .. ";" ..
+                                                                      "color:" .. CONST_VIS_COLOR_BLACK  .. ";}"
+         tStr = tStr .. " td.NotHighlighted "          .. "{background-color:" .. CONST_VIS_COLOR_BG     .. ";}"
+         tStr = tStr .. " td.MIDITableHeader "         .. "{background-color:" .. CONST_VIS_COLOR_BORDER .. ";" ..
+                                                             "border-spacing:" .. "0px"                  .. ";" ..
+                                                            "border-collapse:" .. "collapse"             .. ";" ..
+                                                                "font-weight:" .. "600"                  .. ";" ..
+                                                                      "color:" .. CONST_VIS_COLOR_BLACK  .. ";}"
+
+         return tStr;
+end;
